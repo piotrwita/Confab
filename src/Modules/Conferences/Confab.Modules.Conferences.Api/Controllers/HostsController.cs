@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Confab.Modules.Conferences.Api.Controllers;
 
-[Route("conferences-module")]
 internal class HostsController : BaseController
 {
     private readonly IHostService _hostService;

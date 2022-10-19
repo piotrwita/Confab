@@ -34,6 +34,7 @@ internal class HostService : IHostService
             Name = x.Name,
             HostName = x.Host.Name,
             Location = x.Location,
+            LogoUrl = x.LogoUrl,
             ParticipantsLimit = x.ParticipantsLimit,
             From = x.From,
             To = x.To
@@ -56,8 +57,7 @@ internal class HostService : IHostService
         {
             Id = dto.Id,
             Name = dto.Name,
-            Description = dto.Description,
-
+            Description = dto.Description
         });
     }
 
