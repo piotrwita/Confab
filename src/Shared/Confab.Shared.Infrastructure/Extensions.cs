@@ -34,8 +34,7 @@ internal static class Extensions
     public static WebApplication UseInfrastructure(this WebApplication app)
     {
         app.UseErrorHandling();
-        app.MapControllers();
-        app.MapGet("/", context => context.Response.WriteAsync("Confab API!"));
+        app.UseRouting();
         return app;
     }
 
