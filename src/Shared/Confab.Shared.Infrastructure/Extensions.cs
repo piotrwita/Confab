@@ -1,21 +1,42 @@
 ﻿using Confab.Shared.Abstraction;
+using Confab.Shared.Abstraction.Modules;
 using Confab.Shared.Infrastructure.Api;
 using Confab.Shared.Infrastructure.Exceptions;
 using Confab.Shared.Infrastructure.Postgres;
 using Confab.Shared.Infrastructure.Services;
 using Confab.Shared.Infrastructure.Time;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Confab.Bootstrapper")]
 namespace Confab.Shared.Infrastructure;
 internal static class Extensions
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services,
+        IList<Assembly> assemblies, IList<IModule> modules)
     {
+        var disabledModules = new List<string>();
+        using (var serviceProvider = services.BuildServiceProvider())
+        {
+            var configuration = serviceProvider.GetRequiredService<IConfiguration>();
+            foreach(var (key, value) in configuration.AsEnumerable())
+            {
+                if(!key.Contains(":module:enabled"))
+                {
+                    continue;
+                }
+
+                if(!bool.Parse(value))
+                {
+                    disabledModules.Add(key.Split(":")[0]);
+                }
+            }
+        }
+
         services.AddErrorHandling();
         services.AddPostgres();
         services.AddSingleton<IClock, UtcClock>();
@@ -25,6 +46,20 @@ internal static class Extensions
             //zapewnia ladowanie controllerow jako internal 
             .ConfigureApplicationPartManager(manager =>
             {
+                var removedParts = new List<ApplicationPart>();
+                foreach (var disableModule in disabledModules)
+                {
+                    var parts = manager.ApplicationParts.Where(x => x.Name.Contains(disableModule,
+                        StringComparison.InvariantCultureIgnoreCase));
+
+                    removedParts.AddRange(parts);
+                }
+
+                foreach (var part in removedParts)
+                {
+                    manager.ApplicationParts.Remove(part);
+                }
+
                 manager.FeatureProviders.Add(new InternalControllerFeatureProvider());
             });
 

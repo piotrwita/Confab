@@ -1,16 +1,19 @@
 using Confab.Bootstrapper;
 using Confab.Shared.Infrastructure;
-
-var assemblies = ModuleLoader.LoadAssemblies();
-var modules = ModuleLoader.LoadModules(assemblies);
+using Confab.Shared.Infrastructure.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
+var assemblies = ModuleLoader.LoadAssemblies(builder.Configuration);
+var modules = ModuleLoader.LoadModules(assemblies);
+
 builder.Services
-    .AddInfrastructure() 
+    .AddInfrastructure(assemblies, modules)
     .AddControllers();
 
+builder.Host.ConfigureModules();
+
 //dynamiczne ³adowanie modu³ow
-foreach(var module in modules)
+foreach (var module in modules)
 {
     module.Register(builder.Services);
 }

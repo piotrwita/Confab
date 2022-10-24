@@ -33,8 +33,13 @@ internal class AppInitializer : IHostedService
 
         foreach(var dbContextType in dbContextTypes)
         {
-            var dbContext = scope.ServiceProvider.GetRequiredService(dbContextType) as DbContext;
-            dbContext.Database.MigrateAsync(cancellationToken);
+            var dbContext = scope.ServiceProvider.GetService(dbContextType) as DbContext;
+            if(dbContext is null)
+            {
+                continue; 
+            }
+
+            await dbContext.Database.MigrateAsync(cancellationToken);
         }
 
 
