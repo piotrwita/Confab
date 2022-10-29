@@ -1,0 +1,3 @@
+cd Confab.Modules.Speakers.Core
+dotnet ef
+dotnet ef migrations add Speaker_Module_Init --startup-project ../../../Bootstrapper/Confab.Bootstrapper -o ./DAL/Migrations
