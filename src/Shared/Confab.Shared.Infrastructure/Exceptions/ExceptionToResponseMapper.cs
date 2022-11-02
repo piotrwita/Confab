@@ -1,4 +1,4 @@
-﻿using Confab.Shared.Abstraction.Exceptions;
+﻿using Confab.Shared.Abstractions.Exceptions;
 using Humanizer;
 using System.Collections.Concurrent;
 using System.Net;

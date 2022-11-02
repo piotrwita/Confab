@@ -1,5 +1,5 @@
 ﻿using Confab.Modules.Speakers.Core;
-using Confab.Shared.Abstraction.Modules;
+using Confab.Shared.Abstractions.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +12,8 @@ internal class SpeakersModule : IModule
     public string Name { get; } = "Speakers";
 
     public string Path => BasePath;
+
+    public IEnumerable<string> Conferences { get; } = new[] { "speakers" };
 
     public void Register(IServiceCollection services)
     {

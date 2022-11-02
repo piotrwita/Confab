@@ -1,4 +1,4 @@
-﻿using Confab.Shared.Abstraction.Exceptions;
+﻿using Confab.Shared.Abstractions.Exceptions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 

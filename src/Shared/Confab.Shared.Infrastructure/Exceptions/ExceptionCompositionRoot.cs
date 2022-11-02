@@ -1,4 +1,4 @@
-﻿using Confab.Shared.Abstraction.Exceptions;
+﻿using Confab.Shared.Abstractions.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Confab.Shared.Infrastructure.Exceptions;

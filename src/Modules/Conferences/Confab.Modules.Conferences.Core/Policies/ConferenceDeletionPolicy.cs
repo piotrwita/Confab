@@ -1,5 +1,5 @@
 ﻿using Confab.Modules.Conferences.Core.Entities;
-using Confab.Shared.Abstraction;
+using Confab.Shared.Abstractions;
 
 namespace Confab.Modules.Conferences.Core.Policies;
 

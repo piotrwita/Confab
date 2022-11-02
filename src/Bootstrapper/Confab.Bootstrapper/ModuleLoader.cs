@@ -1,4 +1,4 @@
-﻿using Confab.Shared.Abstraction.Modules;
+﻿using Confab.Shared.Abstractions.Modules;
 using System.Reflection;
 
 namespace Confab.Bootstrapper;

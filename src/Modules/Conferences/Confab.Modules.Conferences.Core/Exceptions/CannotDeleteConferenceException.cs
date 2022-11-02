@@ -1,4 +1,4 @@
-﻿using Confab.Shared.Abstraction.Exceptions;
+﻿using Confab.Shared.Abstractions.Exceptions;
 
 namespace Confab.Modules.Conferences.Core.Exceptions;
 

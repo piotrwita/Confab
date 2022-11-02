@@ -1,4 +1,4 @@
-﻿namespace Confab.Shared.Abstraction.Exceptions;
+﻿namespace Confab.Shared.Abstractions.Exceptions;
 
 public interface IExceptionToResponseMapper
 {

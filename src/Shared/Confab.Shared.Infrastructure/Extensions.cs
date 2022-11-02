@@ -1,5 +1,5 @@
-﻿using Confab.Shared.Abstraction;
-using Confab.Shared.Abstraction.Modules;
+﻿using Confab.Shared.Abstractions;
+using Confab.Shared.Abstractions.Modules;
 using Confab.Shared.Infrastructure.Api;
 using Confab.Shared.Infrastructure.Exceptions;
 using Confab.Shared.Infrastructure.Postgres;
@@ -69,7 +69,9 @@ internal static class Extensions
     public static WebApplication UseInfrastructure(this WebApplication app)
     {
         app.UseErrorHandling();
+        app.UseAuthentication();
         app.UseRouting();
+        app.UseAuthorization();
         return app;
     }
 
