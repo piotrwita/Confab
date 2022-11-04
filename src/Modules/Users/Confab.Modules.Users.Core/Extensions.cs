@@ -14,8 +14,9 @@ internal static class Extensions
 {
     public static IServiceCollection AddCore(this IServiceCollection services)
         => services
-            .AddSingleton<IUserRepository, InMemoryUserRepository>()
+            //.AddSingleton<IUserRepository, InMemoryUserRepository>()
+            .AddScoped<IUserRepository, UserRepository>()
             .AddSingleton<IPasswordHasher<User>, PasswordHasher<User>>()
-            .AddTransient<IIdentityService, IdentityService>();
-            //.AddPostgres<UsersDbContext>();
+            .AddTransient<IIdentityService, IdentityService>()
+            .AddPostgres<UsersDbContext>();
 }

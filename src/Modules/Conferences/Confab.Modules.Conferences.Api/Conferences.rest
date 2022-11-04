@@ -1,7 +1,7 @@
 @url = http://localhost:5000/conferences-module 
-@hostId = c80079cc-b3a6-4e3e-9577-cb08ae894a5a 
-@conferenceId = f37742be-b5d0-4724-840d-8ead403e0539 
-@accessToken = secret
+@hostId = bf7f2b20-e039-43fd-8ba6-e1866e80cd17
+@conferenceId = ec998970-e7b8-43d6-b891-a36a18ec5727
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5NzhkMmNmYi01ZWJkLTQyMWUtYWViNi0yYjlmZjBmY2I1YTciLCJ1bmlxdWVfbmFtZSI6Ijk3OGQyY2ZiLTVlYmQtNDIxZS1hZWI2LTJiOWZmMGZjYjVhNyIsImp0aSI6IjU1MmMyYmE2LTg4M2YtNDFjYS05M2I3LTJjM2Q0ZDk4YjUxMCIsImlhdCI6IjE2Njc1ODM3MTAxNjgiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJ1c2VyIiwicGVybWlzc2lvbnMiOlsiY29uZmVyZW5jZXMiLCJob3N0cyIsInNwZWFrZXJzIiwidGlja2V0cyIsInVzZXJzIl0sIm5iZiI6MTY2NzU4MzcxMCwiZXhwIjoxNjY3NTg3MzEwLCJpc3MiOiJjb25mYWIifQ.0MHVWcn3PWzk1PI4UZfZbSh_DlA5ZmkoEVBdog34TkQ
 
 ### 
 GET {{url}}

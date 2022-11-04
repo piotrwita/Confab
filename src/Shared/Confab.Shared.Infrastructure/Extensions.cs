@@ -40,7 +40,7 @@ internal static class Extensions
 
         services.AddAuth(modules);
         services.AddErrorHandling();
-        //services.AddPostgres();
+        services.AddPostgres();
         services.AddSingleton<IClock, UtcClock>();
         services.AddHostedService<AppInitializer>(); 
         services

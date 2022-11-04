@@ -13,15 +13,15 @@ internal static class Extensions
 { 
     public static IServiceCollection AddCore(this IServiceCollection services)
     {
-        //services.AddPostgres<ConferencesDbContext>();
-        services.AddSingleton<IHostRepository, InMemoryHostRepository>();
-        //services.AddScoped<IHostRepository, HostRepository>();
+        services.AddPostgres<ConferencesDbContext>();
+        //services.AddSingleton<IHostRepository, InMemoryHostRepository>();
+        services.AddScoped<IHostRepository, HostRepository>();
         //jakby do klasy bylo wstrzykiwane repo to by musialo byc scoped
         services.AddSingleton<IHostDeletionPolicy, HostDeletionPolicy>();
         services.AddSingleton<IConferenceDeletionPolicy, ConferenceDeletionPolicy>();
         services.AddScoped<IHostService, HostService>();
-        services.AddSingleton<IConferenceRepository, InMemoryConferenceRepository>();
-        //services.AddScoped<IConferenceRepository, ConferenceRepository>();
+        //services.AddSingleton<IConferenceRepository, InMemoryConferenceRepository>();
+        services.AddScoped<IConferenceRepository, ConferenceRepository>();
         services.AddScoped<IConferenceService, ConferenceService>();
         return services;
     }
