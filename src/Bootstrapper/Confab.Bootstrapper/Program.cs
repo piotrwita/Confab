@@ -3,14 +3,15 @@ using Confab.Shared.Infrastructure;
 using Confab.Shared.Infrastructure.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.ConfigureModules();
+
 var assemblies = ModuleLoader.LoadAssemblies(builder.Configuration);
 var modules = ModuleLoader.LoadModules(assemblies);
 
 builder.Services
     .AddInfrastructure(assemblies, modules)
     .AddControllers();
-
-builder.Host.ConfigureModules();
 
 //dynamiczne ³adowanie modu³ow
 foreach (var module in modules)

@@ -19,7 +19,7 @@ internal class SpeakersController : BaseController
 
     [HttpGet("{id:guid}")]
     [AllowAnonymous]
-    public async Task<ActionResult<SpeakerDto>> GetAsync(Guid id)
+    public async Task<ActionResult<SpeakerDto>> Get(Guid id)
         => OkOrNotFound(await _speakerService.GetAsync(id));
 
     [HttpGet]
@@ -31,7 +31,7 @@ internal class SpeakersController : BaseController
     public async Task<ActionResult> AddAsync(SpeakerDto dto)
     {
         await _speakerService.AddAsync(dto);
-        return CreatedAtAction(nameof(GetAsync), new { id = dto.Id }, null);
+        return CreatedAtAction(nameof(Get), new { id = dto.Id }, null);
     }
 
     [HttpPut("{id:guid}")]

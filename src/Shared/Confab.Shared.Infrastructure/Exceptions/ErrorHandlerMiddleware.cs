@@ -35,7 +35,7 @@ internal class ErrorHandlerMiddleware : IMiddleware
         var errorResponse = _exceptionCompositionRoot.Map(exception);
         context.Response.StatusCode = (int)(errorResponse?.StatusCode ?? HttpStatusCode.InternalServerError);
         var response = errorResponse?.Response;
-        if (response != null)
+        if (response is null)
         {
             return;
         }

@@ -19,7 +19,7 @@ internal class HostsController : BaseController
 
     [HttpGet("{id:guid}")]
     [AllowAnonymous]
-    public async Task<ActionResult<HostDetailsDto>> GetAsync(Guid id)
+    public async Task<ActionResult<HostDetailsDto>> Get(Guid id)
         => OkOrNotFound(await _hostService.GetAsync(id));
 
     [HttpGet]
@@ -31,7 +31,7 @@ internal class HostsController : BaseController
     public async Task<ActionResult> AddAsync(HostDto dto)
     {
         await _hostService.AddAsync(dto);
-        return CreatedAtAction(nameof(GetAsync), new { id = dto.Id }, null);
+        return CreatedAtAction(nameof(Get), new { id = dto.Id }, null);
     }
 
     [HttpPut("{id:guid}")]

@@ -1,6 +1,7 @@
 ﻿using Confab.Shared.Abstractions;
 using Confab.Shared.Abstractions.Modules;
 using Confab.Shared.Infrastructure.Api;
+using Confab.Shared.Infrastructure.Auth;
 using Confab.Shared.Infrastructure.Exceptions;
 using Confab.Shared.Infrastructure.Postgres;
 using Confab.Shared.Infrastructure.Services;
@@ -37,10 +38,11 @@ internal static class Extensions
             }
         }
 
+        services.AddAuth(modules);
         services.AddErrorHandling();
-        services.AddPostgres();
+        //services.AddPostgres();
         services.AddSingleton<IClock, UtcClock>();
-        services.AddHostedService<AppInitializer>();
+        services.AddHostedService<AppInitializer>(); 
         services
             .AddControllers()
             //zapewnia ladowanie controllerow jako internal 

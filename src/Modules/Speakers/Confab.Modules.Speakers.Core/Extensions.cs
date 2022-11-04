@@ -12,8 +12,8 @@ internal static class Extensions
 {
     public static IServiceCollection AddCore(this IServiceCollection services)
     {
-        services.AddPostgres<SpeakersDbContext>();
-        services.AddScoped<ISpeakerRepository, SpeakerRepository>();
+        //services.AddPostgres<SpeakersDbContext>();
+        services.AddSingleton<ISpeakerRepository, InMemorySpeakerRepository>();
         services.AddScoped<ISpeakerService, SpeakerService>();
         return services;
     }

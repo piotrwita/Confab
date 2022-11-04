@@ -13,7 +13,7 @@ internal class ConferencesModule : IModule
 
     public string Path => BasePath;
 
-    public IEnumerable<string> Conferences { get; } = new[] { "conferences", "hosts" };
+    public IEnumerable<string> Policies { get; } = new[] { "conferences", "hosts" };
 
     public void Register(IServiceCollection services)
     {

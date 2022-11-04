@@ -19,7 +19,7 @@ internal class ConferencesController : BaseController
 
     [HttpGet("{id:guid}")]
     [AllowAnonymous]
-    public async Task<ActionResult<ConferenceDetailsDto>> GetAsync(Guid id)
+    public async Task<ActionResult<ConferenceDetailsDto>> Get(Guid id)
         => OkOrNotFound(await _conferenceService.GetAsync(id));
 
     [HttpGet]
@@ -31,7 +31,7 @@ internal class ConferencesController : BaseController
     public async Task<ActionResult> AddAsync(ConferenceDetailsDto dto)
     {
         await _conferenceService.AddAsync(dto);
-        return CreatedAtAction(nameof(GetAsync), new { id = dto.Id }, null);
+        return CreatedAtAction(nameof(Get), new { id = dto.Id }, null);
     }
 
     [HttpPut("{id:guid}")]
