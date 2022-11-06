@@ -2,6 +2,7 @@
 using Confab.Modules.Conferences.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Confab.Modules.Conferences.Api.Controllers;
 
@@ -19,15 +20,22 @@ internal class ConferencesController : BaseController
 
     [HttpGet("{id:guid}")]
     [AllowAnonymous]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<ActionResult<ConferenceDetailsDto>> Get(Guid id)
         => OkOrNotFound(await _conferenceService.GetAsync(id));
 
     [HttpGet]
     [AllowAnonymous]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
     public async Task<ActionResult<IReadOnlyList<ConferenceDto>>> GetAllAsync()
         => Ok(await _conferenceService.GetAllAsync());
 
     [HttpPost]
+    [ProducesResponseType((int)HttpStatusCode.Created)]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+    [ProducesResponseType((int)HttpStatusCode.Forbidden)]
     public async Task<ActionResult> AddAsync(ConferenceDetailsDto dto)
     {
         await _conferenceService.AddAsync(dto);
@@ -35,6 +43,10 @@ internal class ConferencesController : BaseController
     }
 
     [HttpPut("{id:guid}")]
+    [ProducesResponseType((int)HttpStatusCode.NoContent)]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+    [ProducesResponseType((int)HttpStatusCode.Forbidden)]
     public async Task<ActionResult> UpdateAsync(Guid id, ConferenceDetailsDto dto)
     {
         dto.Id = id;
@@ -43,6 +55,10 @@ internal class ConferencesController : BaseController
     }
 
     [HttpDelete("{id:guid}")]
+    [ProducesResponseType((int)HttpStatusCode.NoContent)]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+    [ProducesResponseType((int)HttpStatusCode.Forbidden)]
     public async Task<ActionResult> DeleteAsync(Guid id)
     {
         await _conferenceService.DeleteAsync(id);
