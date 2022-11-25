@@ -3,6 +3,8 @@ using Confab.Modules.Conferences.Core.Entities;
 using Confab.Modules.Conferences.Core.Exceptions;
 using Confab.Modules.Conferences.Core.Policies;
 using Confab.Modules.Conferences.Core.Repositories;
+using Confab.Modules.Conferences.Messages.Events;
+using Confab.Shared.Abstractions.Events;
 
 namespace Confab.Modules.Conferences.Core.Services;
 
@@ -11,13 +13,15 @@ internal class ConferenceService : IConferenceService
     private readonly IConferenceRepository _conferenceRepository;
     private readonly IHostRepository _hostRepository;
     private readonly IConferenceDeletionPolicy _conferenceDeletionPolicy;
+    private readonly IEventDispatcher _eventDispatcher;
 
     public ConferenceService(IConferenceRepository conferenceRepository, IHostRepository hostRepository,
-        IConferenceDeletionPolicy conferenceDeletionPolicy)
+        IConferenceDeletionPolicy conferenceDeletionPolicy, IEventDispatcher eventDispatcher)
     {
         _conferenceRepository = conferenceRepository;
         _hostRepository = hostRepository;
         _conferenceDeletionPolicy = conferenceDeletionPolicy;
+        _eventDispatcher = eventDispatcher;
     }
 
     public async Task<ConferenceDetailsDto> GetAsync(Guid id)
@@ -50,7 +54,7 @@ internal class ConferenceService : IConferenceService
         }
 
         dto.Id = Guid.NewGuid();
-        await _conferenceRepository.AddAsync(new Conference
+        var conference = new Conference
         {
             Id = dto.Id,
             HostId = dto.HostId,
@@ -61,7 +65,11 @@ internal class ConferenceService : IConferenceService
             ParticipantsLimit = dto.ParticipantsLimit,
             From = dto.From,
             To = dto.To
-        });
+        };
+
+        await _conferenceRepository.AddAsync(conference);
+        await _eventDispatcher.PublishAsync(new ConferenceCreated(conference.Id, conference.Name, 
+            conference.ParticipantsLimit, conference.From, conference.To));
     }
 
     public async Task UpdateAsync(ConferenceDetailsDto dto)

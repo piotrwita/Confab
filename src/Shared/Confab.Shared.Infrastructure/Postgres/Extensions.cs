@@ -12,6 +12,10 @@ public static class Extensions
         var options = services.GetOptions<PostgresOptions>("postgres");
         services.AddSingleton(options);
 
+        //Npgsql obsługuje również odczytywanie i zapisywanie DateTimeOffset do znacznika czasu ze strefą czasową, ale tylko z przesunięciem=0
+        //Strefa czasowa była konwertowana na lokalną sygnaturę czasową podczas odczytu.
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
         return services;
     }
 

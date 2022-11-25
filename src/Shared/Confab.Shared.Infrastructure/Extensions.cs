@@ -3,6 +3,7 @@ using Confab.Shared.Abstractions.Modules;
 using Confab.Shared.Infrastructure.Api;
 using Confab.Shared.Infrastructure.Auth;
 using Confab.Shared.Infrastructure.Contexts;
+using Confab.Shared.Infrastructure.Events;
 using Confab.Shared.Infrastructure.Exceptions;
 using Confab.Shared.Infrastructure.Modules;
 using Confab.Shared.Infrastructure.Postgres;
@@ -66,6 +67,7 @@ internal static class Extensions
         services.AddTransient(sp => sp.GetRequiredService<IContextFactory>().Create());
         services.AddModuleInfo(modules);
         services.AddAuth(modules);
+        services.AddEvents(assemblies);
         services.AddErrorHandling();
         services.AddPostgres();
         services.AddSingleton<IClock, UtcClock>();
