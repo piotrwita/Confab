@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Confab.Shared.Abstractions.Messaging;
 
 namespace Confab.Shared.Abstractions.Events;
 
 //Marker
-public interface IEvent 
+// Dziedzicze po imessage poniewaz 
+// to jest zdarzenie integracyjne (nie domenowe) 
+//wobectego sluzy nam do integracji miedz modulami mozemy spokojnie oznaczyc jako imessage
+public interface IEvent : IMessage
 {
 }

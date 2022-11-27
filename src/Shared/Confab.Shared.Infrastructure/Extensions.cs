@@ -5,6 +5,7 @@ using Confab.Shared.Infrastructure.Auth;
 using Confab.Shared.Infrastructure.Contexts;
 using Confab.Shared.Infrastructure.Events;
 using Confab.Shared.Infrastructure.Exceptions;
+using Confab.Shared.Infrastructure.Messaging;
 using Confab.Shared.Infrastructure.Modules;
 using Confab.Shared.Infrastructure.Postgres;
 using Confab.Shared.Infrastructure.Services;
@@ -30,14 +31,14 @@ internal static class Extensions
         using (var serviceProvider = services.BuildServiceProvider())
         {
             var configuration = serviceProvider.GetRequiredService<IConfiguration>();
-            foreach(var (key, value) in configuration.AsEnumerable())
+            foreach (var (key, value) in configuration.AsEnumerable())
             {
-                if(!key.Contains(":module:enabled"))
+                if (!key.Contains(":module:enabled"))
                 {
                     continue;
                 }
 
-                if(!bool.Parse(value))
+                if (!bool.Parse(value))
                 {
                     disabledModules.Add(key.Split(":")[0]);
                 }
@@ -69,10 +70,11 @@ internal static class Extensions
         services.AddModuleRequests(assemblies);
         services.AddAuth(modules);
         services.AddEvents(assemblies);
+        services.AddMessaging();
         services.AddErrorHandling();
         services.AddPostgres();
         services.AddSingleton<IClock, UtcClock>();
-        services.AddHostedService<AppInitializer>(); 
+        services.AddHostedService<AppInitializer>();
         services
             .AddControllers()
             //zapewnia ladowanie controllerow jako internal 
