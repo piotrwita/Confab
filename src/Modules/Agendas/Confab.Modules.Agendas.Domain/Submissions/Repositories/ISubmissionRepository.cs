@@ -10,7 +10,7 @@ namespace Confab.Modules.Agendas.Domain.Submissions.Repositories;
 
 public interface ISubmissionRepository
 {
-    Task<Submission> GetAsync(AggregateId id)
+    Task<Submission> GetAsync(AggregateId id);
     Task AddAsync(Submission submission);
     Task UpdateAsync(Submission submission);
 }
