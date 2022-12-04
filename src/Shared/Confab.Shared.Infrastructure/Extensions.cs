@@ -2,6 +2,7 @@
 using Confab.Shared.Abstractions.Modules;
 using Confab.Shared.Infrastructure.Api;
 using Confab.Shared.Infrastructure.Auth;
+using Confab.Shared.Infrastructure.Commands;
 using Confab.Shared.Infrastructure.Contexts;
 using Confab.Shared.Infrastructure.Events;
 using Confab.Shared.Infrastructure.Exceptions;
@@ -69,6 +70,7 @@ internal static class Extensions
         services.AddModuleInfo(modules);
         services.AddModuleRequests(assemblies);
         services.AddAuth(modules);
+        services.AddCommands(assemblies);
         services.AddEvents(assemblies);
         services.AddMessaging();
         services.AddErrorHandling();
