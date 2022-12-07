@@ -1,0 +1,3 @@
+cd Confab.Modules.Agendas.Infrastructure
+dotnet ef
+dotnet ef migrations add Agendas_Module_Init --startup-project ../../../Bootstrapper/Confab.Bootstrapper -o ./EF/Migrations --context AgendasDbContext

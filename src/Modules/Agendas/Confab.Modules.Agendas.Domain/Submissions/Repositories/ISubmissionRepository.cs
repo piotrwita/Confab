@@ -14,9 +14,3 @@ public interface ISubmissionRepository
     Task AddAsync(Submission submission);
     Task UpdateAsync(Submission submission);
 }
-public interface ISpeakerRepository
-{
-    Task<bool> ExistsAsync(AggregateId id);
-    Task<IEnumerable<Speaker>> BrowseAsync(IEnumerable<AggregateId> ids);
-    Task CreateAsync (Speaker speaker); 
-}
