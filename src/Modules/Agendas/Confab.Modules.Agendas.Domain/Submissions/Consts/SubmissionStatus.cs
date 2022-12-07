@@ -1,6 +1,6 @@
 ﻿namespace Confab.Modules.Agendas.Domain.Submissions.Consts;
 
-internal static class SubmissionStatus
+public static class SubmissionStatus
 {
     public const string Pending = nameof(Pending);
     public const string Approved = nameof(Approved);
