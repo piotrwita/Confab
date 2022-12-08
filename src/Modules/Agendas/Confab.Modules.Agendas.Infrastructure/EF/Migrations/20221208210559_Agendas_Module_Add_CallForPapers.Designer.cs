@@ -3,6 +3,7 @@ using System;
 using Confab.Modules.Agendas.Infrastructure.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Confab.Modules.Agendas.Infrastructure.EF.Migrations
 {
     [DbContext(typeof(AgendasDbContext))]
-    partial class AgendasDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221208210559_Agendas_Module_Add_CallForPapers")]
+    partial class Agendas_Module_Add_CallForPapers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

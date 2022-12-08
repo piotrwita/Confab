@@ -1,6 +1,7 @@
 ﻿using Confab.Modules.Agendas.Application.Submissions.DTO;
 using Confab.Modules.Agendas.Application.Submissions.Queries;
 using Confab.Modules.Agendas.Domain.Submissions.Entities;
+using Confab.Modules.Agendas.Infrastructure.EF.Mappings;
 using Confab.Shared.Abstractions.Queries;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,20 +23,6 @@ internal sealed class GetSubmissionHandler : IQueryHandler<GetSubmission, Submis
             .Where(x => x.Id.Equals(query.Id))
             .Include(x => x.Speakers)
             //tu mozna uzyc automapera
-            .Select(x => new SubmissionDto
-            {
-                Id = x.Id,
-                ConferenceId = x.ConferenceId,
-                Title = x.Title,
-                Description = x.Description,
-                Level = x.Level,
-                Status = x.Status,
-                Tags = x.Tags,
-                Speakers = x.Speakers.Select(s => new SpeakerDto
-                {
-                    Id = s.Id,
-                    FullName = s.FullName
-                })
-            })
+            .Select(s => s.AsDto())
             .SingleOrDefaultAsync();
 }
