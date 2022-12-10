@@ -1,5 +1,6 @@
 ﻿using Confab.Shared.Abstractions;
 using Confab.Shared.Abstractions.Modules;
+using Confab.Shared.Abstractions.Storage;
 using Confab.Shared.Infrastructure.Api;
 using Confab.Shared.Infrastructure.Auth;
 using Confab.Shared.Infrastructure.Commands;
@@ -66,6 +67,8 @@ internal static class Extensions
                 Version = "v1"
             });
         });
+        services.AddMemoryCache();
+        services.AddSingleton<IRequestStorage, RequestStorage>();
         services.AddSingleton<IContextFactory, ContextFactory>();
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddTransient(sp => sp.GetRequiredService<IContextFactory>().Create());
