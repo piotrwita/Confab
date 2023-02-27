@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{47333C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Confab.Bootstrapper", "src\Bootstrapper\Confab.Bootstrapper\Confab.Bootstrapper.csproj", "{18085B88-C7C1-43D2-812F-D63908063E3A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Confab.Shared.Abstractions", "src\Shared\Confab.Shared.Abstraction\Confab.Shared.Abstractions.csproj", "{4BB7172E-69FF-4553-9D59-2F9D71D48F23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Confab.Shared.Abstractions", "src\Shared\Confab.Shared.Abstractions\Confab.Shared.Abstractions.csproj", "{4BB7172E-69FF-4553-9D59-2F9D71D48F23}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Confab.Shared.Infrastructure", "src\Shared\Confab.Shared.Infrastructure\Confab.Shared.Infrastructure.csproj", "{66472145-5187-4BCA-89D0-21EC3973CB21}"
 EndProject
@@ -52,6 +52,16 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Confab.Modules.Agendas.Application", "src\Modules\Agendas\Confab.Modules.Agendas.Application\Confab.Modules.Agendas.Application.csproj", "{ADB8F4A4-EFBF-445C-B58E-BD384FCA55FA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Confab.Modules.Agendas.Infrastructure", "src\Modules\Agendas\Confab.Modules.Agendas.Infrastructure\Confab.Modules.Agendas.Infrastructure.csproj", "{C831BD75-9FE2-45CC-898E-DC82E286B771}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Attendances", "Attendances", "{779DC788-2EE5-476B-818E-D3BBE5D49FFD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Confab.Modules.Attendances.Api", "src\Modules\Attendances\Confab.Modules.Attendances.Api\Confab.Modules.Attendances.Api.csproj", "{A623D06C-1D02-41CB-BCFE-7F9E9BD7979D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Confab.Modules.Attendances.Application", "src\Modules\Attendances\Confab.Modules.Attendances.Application\Confab.Modules.Attendances.Application.csproj", "{212EFF21-C9BC-4FC0-B0BD-CF4F701D75F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Confab.Modules.Attendances.Domain", "src\Modules\Attendances\Confab.Modules.Attendances.Domain\Confab.Modules.Attendances.Domain.csproj", "{22F582C2-229B-4A51-836D-B2EF6C235601}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Confab.Modules.Attendances.Infrastructure", "src\Modules\Attendances\Confab.Modules.Attendances.Infrastructure\Confab.Modules.Attendances.Infrastructure.csproj", "{F42D8974-0F6A-474F-8CC2-41F4D6FD4F54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,6 +129,22 @@ Global
 		{C831BD75-9FE2-45CC-898E-DC82E286B771}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C831BD75-9FE2-45CC-898E-DC82E286B771}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C831BD75-9FE2-45CC-898E-DC82E286B771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A623D06C-1D02-41CB-BCFE-7F9E9BD7979D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A623D06C-1D02-41CB-BCFE-7F9E9BD7979D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A623D06C-1D02-41CB-BCFE-7F9E9BD7979D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A623D06C-1D02-41CB-BCFE-7F9E9BD7979D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{212EFF21-C9BC-4FC0-B0BD-CF4F701D75F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{212EFF21-C9BC-4FC0-B0BD-CF4F701D75F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{212EFF21-C9BC-4FC0-B0BD-CF4F701D75F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{212EFF21-C9BC-4FC0-B0BD-CF4F701D75F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22F582C2-229B-4A51-836D-B2EF6C235601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F582C2-229B-4A51-836D-B2EF6C235601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22F582C2-229B-4A51-836D-B2EF6C235601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22F582C2-229B-4A51-836D-B2EF6C235601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F42D8974-0F6A-474F-8CC2-41F4D6FD4F54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F42D8974-0F6A-474F-8CC2-41F4D6FD4F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F42D8974-0F6A-474F-8CC2-41F4D6FD4F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F42D8974-0F6A-474F-8CC2-41F4D6FD4F54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,6 +173,11 @@ Global
 		{126E73B3-F233-497C-B8FB-974B9835A1E1} = {CFE72C36-F33E-4F96-939F-0FDCC8EEEF8C}
 		{ADB8F4A4-EFBF-445C-B58E-BD384FCA55FA} = {CFE72C36-F33E-4F96-939F-0FDCC8EEEF8C}
 		{C831BD75-9FE2-45CC-898E-DC82E286B771} = {CFE72C36-F33E-4F96-939F-0FDCC8EEEF8C}
+		{779DC788-2EE5-476B-818E-D3BBE5D49FFD} = {DFCB7E9E-1760-42FE-8997-A76B7B0DBE1F}
+		{A623D06C-1D02-41CB-BCFE-7F9E9BD7979D} = {779DC788-2EE5-476B-818E-D3BBE5D49FFD}
+		{212EFF21-C9BC-4FC0-B0BD-CF4F701D75F5} = {779DC788-2EE5-476B-818E-D3BBE5D49FFD}
+		{22F582C2-229B-4A51-836D-B2EF6C235601} = {779DC788-2EE5-476B-818E-D3BBE5D49FFD}
+		{F42D8974-0F6A-474F-8CC2-41F4D6FD4F54} = {779DC788-2EE5-476B-818E-D3BBE5D49FFD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B1E7273-77B3-4AAB-B487-AF884C273043}

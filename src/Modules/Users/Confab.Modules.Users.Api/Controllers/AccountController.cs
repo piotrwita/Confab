@@ -1,7 +1,7 @@
 ﻿using Confab.Modules.Users.Core.DTO;
 using Confab.Modules.Users.Core.Services;
 using Confab.Shared.Abstractions.Auth;
-using Confab.Shared.Abstractions.Context;
+using Confab.Shared.Abstractions.Contexts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

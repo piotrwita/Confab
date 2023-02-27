@@ -1,6 +1,6 @@
 ﻿using Confab.Modules.Tickets.Core.DTO;
 using Confab.Modules.Tickets.Core.Services;
-using Confab.Shared.Abstractions.Context;
+using Confab.Shared.Abstractions.Contexts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;

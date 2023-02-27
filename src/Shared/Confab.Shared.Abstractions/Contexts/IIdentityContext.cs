@@ -1,4 +1,4 @@
-﻿namespace Confab.Shared.Abstractions.Context;
+﻿namespace Confab.Shared.Abstractions.Contexts;
 
 public interface IIdentityContext
 {

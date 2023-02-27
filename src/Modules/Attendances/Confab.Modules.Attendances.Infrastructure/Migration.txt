@@ -1,0 +1,3 @@
+cd Confab.Modules.Attendances.Infrastructure
+dotnet ef
+dotnet ef migrations add Attendances_Module_Init --startup-project ../../../Bootstrapper/Confab.Bootstrapper -o ./EF/Migrations --context AttendancesDbContext

@@ -1,4 +1,4 @@
-﻿using Confab.Shared.Abstractions.Context;
+﻿using Confab.Shared.Abstractions.Contexts;
 using Microsoft.AspNetCore.Http;
 
 namespace Confab.Shared.Infrastructure.Contexts;
@@ -15,5 +15,5 @@ internal class ContextFactory : IContextFactory
     {
         var httpContext = _httpContextAccessor.HttpContext;
         return httpContext is null ? Context.Empty() : new Context(httpContext);
-    }
+    } 
 }

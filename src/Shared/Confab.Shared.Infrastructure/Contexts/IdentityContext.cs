@@ -1,4 +1,4 @@
-﻿using Confab.Shared.Abstractions.Context;
+﻿using Confab.Shared.Abstractions.Contexts;
 using System.Security.Claims;
 
 namespace Confab.Shared.Infrastructure.Contexts;

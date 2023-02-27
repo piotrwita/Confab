@@ -1,4 +1,4 @@
-﻿using Confab.Shared.Abstractions.Context;
+﻿using Confab.Shared.Abstractions.Contexts;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
