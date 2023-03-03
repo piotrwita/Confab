@@ -28,6 +28,8 @@ namespace Confab.Modules.Attendances.Application.Events.External.Handlers
             }
 
             participant = new Participant(Guid.NewGuid(), @event.ConferenceId, @event.UserId);
+
+            //utworzenie partycypanta
             await _participantsRepository.AddAsync(participant);
             _logger.LogInformation($"Added a participant with ID: '{participant.Id}' " +
                                    $"for conference: '{participant.ConferenceId}', user: '{participant.UserId}'.");
