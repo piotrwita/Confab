@@ -1,4 +1,6 @@
-﻿namespace Confab.Shared.Abstractions.Modules;
+﻿using System.Runtime.Serialization;
+
+namespace Confab.Shared.Abstractions.Modules;
 
 public interface IModuleClient
 {
