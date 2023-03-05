@@ -37,7 +37,7 @@ namespace Confab.Modules.Attendances.Application.Events.External.Handlers
                 throw new AttendableEventNotFoundException(@event.AgendaItemId);
             }
 
-            if (!slot.ParticipantsLimit.HasValue)
+            if (!slot.ParticipantsLimit.HasValue) 
             {
                 return;
             }
