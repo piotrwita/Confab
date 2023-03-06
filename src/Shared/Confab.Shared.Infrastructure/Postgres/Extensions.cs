@@ -1,7 +1,10 @@
-﻿using Confab.Shared.Abstractions.Exceptions;
+﻿using Confab.Shared.Abstractions.Commands;
+using Confab.Shared.Abstractions.Exceptions;
+using Confab.Shared.Infrastructure.Postgres.Decorators;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Npgsql.Replication.PgOutput.Messages;
 
 namespace Confab.Shared.Infrastructure.Postgres;
 
@@ -20,6 +23,13 @@ public static class Extensions
         return services;
     }
 
+    public static IServiceCollection AddTransactionalDecorators(this IServiceCollection services)
+    {
+        services.TryDecorate(typeof(ICommandHandler<>), typeof(TransactionalCommandHandlerDecorator<>));
+
+        return services;
+    }
+
     public static IServiceCollection AddPostgres<T>(this IServiceCollection services) where T : DbContext
     {
         var options = services.GetOptions<PostgresOptions>("postgres");
@@ -34,6 +44,7 @@ public static class Extensions
         services.AddScoped<TUnitOfWork, TImplementation>();
         services.AddScoped<IUnitOfWork, TImplementation>();
 
+        //rejestracja typów
         using var serviceProvider = services.BuildServiceProvider();
         serviceProvider.GetRequiredService<UnitOfWorkTypeRegistry>().Register<TUnitOfWork>();
 

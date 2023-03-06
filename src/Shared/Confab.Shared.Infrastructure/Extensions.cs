@@ -82,6 +82,7 @@ internal static class Extensions
         services.AddMessaging();
         services.AddErrorHandling();
         services.AddPostgres();
+        services.AddTransactionalDecorators();
         services.AddSingleton<IClock, UtcClock>();
         services.AddHostedService<AppInitializer>();
         services
