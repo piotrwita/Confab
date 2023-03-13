@@ -24,6 +24,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Confab.Bootstrapper")]
+[assembly: InternalsVisibleTo("Confab.Shared.Tests")]
 namespace Confab.Shared.Infrastructure;
 internal static class Extensions
 {

@@ -35,3 +35,5 @@ app.MapGet("/", context => context.Response.WriteAsync("Confab API!"));
 app.MapModuleInfo();
 
 app.Run();
+
+public partial class Program { }
