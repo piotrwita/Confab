@@ -14,6 +14,7 @@ using System.Net.Http.Json;
 
 namespace Confab.Modules.Attendances.Tests.Integration.Controllers;
 
+[Collection("integration")]//dzieki temu testy sa wykonywane po kolei dzieki czemu nie bedzie problemow z kilkoma akcjami jednoczesnie na tej samej bazie
 public class AttendancesControllerTests : IClassFixture<TestApplicationFactory>,
         IClassFixture<TestAttendancesDbContext>
 {
@@ -106,9 +107,9 @@ public class AttendancesControllerTests : IClassFixture<TestApplicationFactory>,
         await _dbContext.SaveChangesAsync();
 
         Authenticate(userId);
-
+         
         var response = await _client.PostAsJsonAsync($"{Path}/events/{attendableEvent.Id}/attend", new { });
-        response.IsSuccessStatusCode.ShouldBeTrue();
+         response.IsSuccessStatusCode.ShouldBeTrue();
         response.StatusCode.ShouldBe(HttpStatusCode.NoContent);
     }
 
@@ -123,18 +124,16 @@ public class AttendancesControllerTests : IClassFixture<TestApplicationFactory>,
     private HttpClient _client;
     private AttendancesDbContext _dbContext;
 
-    public AttendancesControllerTests(TestApplicationFactory factory,
-        TestAttendancesDbContext dbContext)
+    public AttendancesControllerTests(TestApplicationFactory factory, TestAttendancesDbContext dbContext)
     {
         _agendasApiClient = Substitute.For<IAgendasApiClient>();
-
         _client = factory
+            //tutaj dodaje poniewaz musze nadpisac wstrzykniecie klienta oryginalnie
             .WithWebHostBuilder(builder => builder.ConfigureServices(services =>
             {
-                //tutaj dodaje poniewaz musze nadpisac wstrzykniecie klienta oryginalnie
                 services.AddSingleton(_agendasApiClient);
             }))
             .CreateClient();
         _dbContext = dbContext.DbContext;
-    }
+    } 
 }

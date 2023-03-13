@@ -1,4 +1,5 @@
-﻿using Confab.Modules.Attendances.Domain.Exceptions;
+﻿using Confab.Modules.Attendances.Domain.Events;
+using Confab.Modules.Attendances.Domain.Exceptions;
 using Confab.Modules.Attendances.Domain.Types;
 using Confab.Shared.Abstractions.Kernel.Types;
 
@@ -38,7 +39,7 @@ public class Participant : AggregateRoot<ParticipantId>
         }
 
         _attendances.Add(attendance);
-        //AddEvent(new ParticipantAttendedToEvent(this, attendance));
+        AddEvent(new ParticipantAttendedToEvent(this, attendance));
     }
 
     private bool HasCollision(Attendance attendance)
